@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user1" class="com.example.atm.Account">
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" value="Yerbolat"/>
+        <constructor-arg index="2" value="1000"/>
+        <constructor-arg index="3" value="1234"/>
+    </bean>
+    <bean id="user2" class="com.example.atm.Account">
+        <constructor-arg index="0" value="2"/>
+        <constructor-arg index="1" value="Tagabay"/>
+        <constructor-arg index="2" value="2000"/>
+        <constructor-arg index="3" value="4321"/>
+    </bean>
+    <bean id="user3" class="com.example.atm.Account">
+        <constructor-arg index="0" value="3"/>
+        <constructor-arg index="1" value="ISovski"/>
+        <constructor-arg index="2" value="3000"/>
+        <constructor-arg index="3" value="123"/>
+    </bean>
+
+    <bean id="bankBean" class="com.example.atm.Bank">
+        <constructor-arg name="accounts">
+            <list>
+                <ref bean="user1"/>
+                <ref bean="user2"/>
+                <ref bean="user3"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="atmBean" class="com.example.atm.ATM">
+        <constructor-arg ref="bankBean"/>
+    </bean>
+
+
+</beans>
